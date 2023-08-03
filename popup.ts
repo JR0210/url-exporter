@@ -1,6 +1,6 @@
 window.onload = () => {
   document.getElementById("exportButton")?.addEventListener("click", () => {
-    chrome.tabs.query({}, (tabs) => {
+    chrome.tabs.query({ currentWindow: true }, (tabs) => {
       const urls = tabs.map((tab) => tab.url);
       const csvContent = urls.join("\n");
       const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
